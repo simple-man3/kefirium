@@ -15,7 +15,6 @@ class UserResource extends BaseJsonResource
             'id' => $this->id,
             'login' => $this->login,
             'email' => $this->email,
-            'password' => $this->password,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
