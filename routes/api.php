@@ -5,3 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('user/{id}', [UserController::class, 'get']);
 Route::post('user', [UserController::class, 'create']);
+Route::post('user:get-by-password', [UserController::class, 'getUserByPassword']);
