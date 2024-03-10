@@ -6,6 +6,7 @@ use App\Domain\Users\Models\Tests\UserFactory;
 use Carbon\CarbonInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * @property int $id
@@ -39,6 +40,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function checkPassword(string $password): bool
+    {
+        return Hash::check($password, $this->password);
+    }
 
     public static function factory(): UserFactory
     {

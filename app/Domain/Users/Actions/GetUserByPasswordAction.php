@@ -12,10 +12,13 @@ class GetUserByPasswordAction
         /** @var User $user */
         $user = User::query()
             ->where('login', $fields['login'])
-            ->where('password', $fields['password'])
             ->first();
 
         if (is_null($user)) {
+            throw new NotFoundException('User not found');
+        }
+
+        if (!$user->checkPassword($fields['password'])) {
             throw new NotFoundException('User not found');
         }
 
